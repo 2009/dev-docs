@@ -1,27 +1,28 @@
-TODO
+# My Archlinux Install
+#### TODO
 
-- Add a section on checking for errors!!!!
+- [ ] Add a section on checking for errors!!!!
 
-### Install non-GUI packages
+## Install non-GUI packages
 
 ```
 pacman -S git openssh termite networkmanager ranger atool highlight /
           mediainfo file htop scrot
 ```
 
-### Install main GUI packages
+## Install main GUI packages
 
 ```
 pacman -S git xorg xorg-utils xorg-apps xterm xorg-xinit awesome
 ```
 
-### Create .xinitrc and add ```exec awesome```
+## Create .xinitrc and add `exec awesome`
 
 ```
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
 ```
 
-### Install additional GUI packages
+## Install additional GUI packages
 
 ```
 pacman -S git ttf-dejavu tamsyn-font firefox chromium gimp inkscape mpv /
@@ -29,7 +30,7 @@ pacman -S git ttf-dejavu tamsyn-font firefox chromium gimp inkscape mpv /
           zathura zathura-pdf-poppler task ntp firewalld
 ```
 
-### Install Yaourt
+## Install Yaourt
 
 ```
 mkdir ~/build
@@ -44,23 +45,23 @@ makepkg -si
 cd ..
 ```
 
-### Install AUR packages
+## Install AUR packages
 
 ```
 yaourt -S tamzen-font-git blockify spotify bitlbee-steam-git tasksh
 ```
 
-### Enable NetworkManager
+## Enable NetworkManager
 
 ```
 systemctl enable NetworkManager
 systemctl start NetworkManager
 ```
 
-### Setup SSH server
+## Setup SSH server
 
 #### Change the default port
-Change ```ListenStream```` to port 4395 (or any random unused port)
+Change `ListenStream` to port 4395 (or any random unused port)
 
 ```
 systemctl edit sshd.socket
@@ -68,7 +69,7 @@ systemctl edit sshd.socket
 
 #### Force public key authentication
 
-Edit ```sshd_config```
+Edit `sshd_config`
 ```
 PasswordAuthentication no
 ChallengeResponseAuthentication no
@@ -89,25 +90,25 @@ firewall-cmd --permanent --zone=public --add-port=4395/tcp
 firewall-cmd --permanent --zone=public --remove-service=ssh
 ```
 
-### Start firewalld
+## Start firewalld
 
 ```
 systemctl start firewalld
 systemctl enable firewalld
 ```
 
-### Setup Wireless
+## Setup Wireless
 
-Just use the networkmanager command ```nmtui```
+Just use the networkmanager command `nmtui`
 
 ## Setup Weechat and Bitlbee
 
-Start and enable bitlbee daemon ```systemctl start bitlbee```. This will
+Start and enable bitlbee daemon `systemctl start bitlbee`. This will
 make it show up in weechat.
 
-See this link http://zanshin.net/2015/01/10/a-guide-for-setting-up-weechat-and-bitlbee/
-See help for weechat and bitlbee.
-See https://github.com/bitlbee/bitlbee-steam for adding steam account
+See this link http://zanshin.net/2015/01/10/a-guide-for-setting-up-weechat-and-bitlbee/  
+See help for weechat and bitlbee.  
+See https://github.com/bitlbee/bitlbee-steam for adding steam account  
 
 Automatically identify and connect to accounts
 ```
@@ -139,7 +140,7 @@ Oper command syntax (could not find this anywhere)
 ```
 /oper <any-random-string> <password>
 ```
-Remember to ```/save``` after adding an account.
+Remember to `/save` after adding an account.
 
 ## Setup blockify with spotify
 
@@ -162,8 +163,8 @@ then
 fi
 ```
 
-By placing this script at ```/usr/local/bin/spotify```, it gets preferred to
-```/usr/bin/spotify``` everytime you start Spotify, so there's nothing else to
+By placing this script at `/usr/local/bin/spotify`, it gets preferred to
+`/usr/bin/spotify` everytime you start Spotify, so there's nothing else to
 change and updates won't break it.
 
 ## Setup hibernation with Grub and systemd
