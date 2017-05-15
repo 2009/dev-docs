@@ -100,7 +100,7 @@ systemctl enable firewalld
 
 Just use the networkmanager command ```nmtui```
 
-### Setup Weechat and Bitlbee
+## Setup Weechat and Bitlbee
 
 Start and enable bitlbee daemon ```systemctl start bitlbee```. This will
 make it show up in weechat.
@@ -141,7 +141,7 @@ Oper command syntax (could not find this anywhere)
 ```
 Remember to ```/save``` after adding an account.
 
-### Setup blockify with spotify
+## Setup blockify with spotify
 
 With blockify you can mute commercials. It is available in the AUR as blockify.
 
@@ -166,11 +166,30 @@ By placing this script at ```/usr/local/bin/spotify```, it gets preferred to
 ```/usr/bin/spotify``` everytime you start Spotify, so there's nothing else to
 change and updates won't break it.
 
+## Setup hibernation with Grub and systemd
 
+[Power Management: Suspend and Hibernate](https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate)
 
+Append `resume` to the following line in `/etc/default/grub.cfg`:
 
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash _resume=UUID=4209c845-f495-4c43-8a03-5363dd433153_"
+```
 
+Regenerate the grub.cfg:
 
+```
+grub-mkconfig -o /boot/grub/grub.cfg
+```
 
+Update initramfs (`/etc/mkinitcpio.config`) and add the `resume` hook after `udev`:
 
+```
+HOOKS="base udev _resume_ autodetect modconf block filesystems keyboard fsck"
+```
 
+Rebuild the image:
+
+```
+mkinitcpio -p linux
+```
