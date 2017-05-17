@@ -83,3 +83,7 @@ We all imports for the page (including in the app module) and replace all refere
 this.navCtrl.push(_'HomePage'_)
 ```
 
+## Resources
+
+[http://ionicframework.com/docs/api/navigation/NavController/](http://ionicframework.com/docs/api/navigation/NavController/)
+[http://ionicframework.com/docs/api/navigation/IonicPage/](http://ionicframework.com/docs/api/navigation/IonicPage/)
