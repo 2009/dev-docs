@@ -22,3 +22,9 @@ docker tag <image> username/repository:tag  # Tag <image> for upload to registry
 docker push username/repository:tag            # Upload tagged image to registry
 docker run username/repository:tag                   # Run image from a registry
 ```
+
+## Useful Links
+
+[Docker Getting Started](https://docs.docker.com/get-started/part2/)  
+[Dockerfile Reference](https://docs.docker.com/engine/reference/builder)  
+[Image Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)  
