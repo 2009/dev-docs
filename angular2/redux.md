@@ -15,8 +15,11 @@ See the following article by redux creator Dan Abramov: [You Might Not Need Redu
 
 ### ngrx
 [ngrx/store](https://github.com/ngrx/store)
+
+### ngrx example apps
 [ngrx/example-app](https://github.com/ngrx/example-app)
-[aviabird/angularspree](https://github.com/aviabird/angularspree) - spree written in angular 2 and ngrx, good as an example
+[aviabird/angularspree](https://github.com/aviabird/angularspree) - spree written in angular 2 and ngrx
+[ddellamico/ionic2-conference-app](https://github.com/ddellamico/ionic2-conference-app) - ionic2 conference app but written with jwt auth and ngrx
 
 ## Resources
 
