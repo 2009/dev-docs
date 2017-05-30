@@ -7,7 +7,7 @@
 
 ```
 pacman -S git openssh termite networkmanager ranger atool highlight /
-          mediainfo file htop scrot
+          mediainfo file htop scrot fasd
 ```
 
 ## Install main GUI packages
