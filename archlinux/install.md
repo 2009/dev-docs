@@ -7,7 +7,7 @@
 
 ```
 pacman -S git openssh termite networkmanager ranger atool highlight /
-          mediainfo file htop scrot fasd
+          mediainfo file htop scrot fasd thefuck pkgfile
 ```
 
 ## Install main GUI packages
@@ -28,6 +28,12 @@ cp /etc/X11/xinit/xinitrc ~/.xinitrc
 pacman -S git ttf-dejavu tamsyn-font firefox chromium gimp inkscape mpv /
           pulseaudio pulsaudio-alsa pavucontrol playerctl weechat bitlbee /
           zathura zathura-pdf-poppler task ntp firewalld
+```
+
+## Update pkgfile for command not found suggestions with zsh
+
+```
+pkgfile --update
 ```
 
 ## Install Yaourt
