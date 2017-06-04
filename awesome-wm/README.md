@@ -1,7 +1,9 @@
 # Awesome Window Manager
 
 ### TODO
-* [ ] Add details on manually creating a cairo pattern (Colors section).
+* [ ] Add details on manually creating a cairo pattern and link (Colors section).
+* [ ] Complete shape section (shape function)
+* [ ] Complete image section (image file or cairo surface)
 
 ## Modifying the Theme
 
@@ -18,7 +20,7 @@ Below I have listed what format the different variable types you will encounter 
 Theme variables that expect a color will accept anything that can be passed as an argument to `gears.color()` or a cairo pattern, which happens to be the return value of calling the `gears.color()` function.
 
 Arguments to `gears.color()` are specified in the format `type:arguments` with `arguments` depending on the type.
-Alternatively, you can specify them as *table* rather than a *string* like so:
+Alternatively, you can specify them as **table** rather than a **string** like so:
 
 ```lua
 -- Here 'color' is an argument for type 'solid'
@@ -110,10 +112,8 @@ theme.bg_normal = {
 
 ### Shape
 
-TODO = function
-
 ### Image
 
-TODO - actual image or *SURFACE*
+Image file or **SURFACE**
 
 Examples of creating surfaces: [https://github.com/awesomeWM/awesome/blob/master/lib/beautiful/theme_assets.lua](https://github.com/awesomeWM/awesome/blob/master/lib/beautiful/theme_assets.lua)
