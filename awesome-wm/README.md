@@ -1,6 +1,9 @@
 # Awesome Window Manager
 
-## Themeing
+### TODO
+* [ ] Add details on manually creating a cairo pattern (Colors section).
+
+## Modifying the Theme
 
 > See: [Change Awesome appearance](https://awesomewm.org/doc/api/documentation/06-appearance.md.html)
 
