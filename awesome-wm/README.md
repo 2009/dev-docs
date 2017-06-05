@@ -3,7 +3,8 @@
 ### TODO
 * [ ] Add details on manually creating a cairo pattern and link (Colors section).
 * [X] Complete shape section (shape function)
-* [ ] Complete image section (image file or cairo surface)
+* [X] Complete image section (image file or cairo surface)
+* [ ] Add details on setting background images for widgets using a cairo surface (Image section)
 * [ ] Consider adding images examples
 
 ## Modifying the Theme
@@ -113,7 +114,7 @@ theme.bg_normal = {
 
 ### Shape
 
-A shape can be set to a function to allow you to set the shape of widgets, it takes three argument `(cr, width, height)` where `cr` is the cairo context, `width` and `height` are the width and height of the widget.
+A shape variable is assigned a function that sets the shape of widgets, it takes three argument `(cr, width, height)` where `cr` is the cairo context and `width` and `height` are the width and height of the widget.
 
 Reading about [Cairo's Drawing Model](https://www.cairographics.org/tutorial/#L1drawingmodel) can help you understand
 how the shape will be used. Whatever shape you draw will essentially become the **mask** layer for the widget.
@@ -163,6 +164,48 @@ end
 
 ### Image
 
-Image file or **SURFACE**
+Any theme variables that expect a background image can be assigned the image path or a cairo surface.
 
-Examples of creating surfaces: [https://github.com/awesomeWM/awesome/blob/master/lib/beautiful/theme_assets.lua](https://github.com/awesomeWM/awesome/blob/master/lib/beautiful/theme_assets.lua)
+#### Using an image path
+
+```lua
+theme.wibar_bgimage = "/path/to/image.png"
+```
+
+#### Using a Cairo Surface
+
+The following example shows how you can manually create a cairo surface, this is what awesome does a lot 
+under the hood. Manually creating a surface gives you a lot of control and can also be used to style your
+own widgets.
+
+```lua
+-- function to create a cairo surface with a box at posx and posy
+function box_surface(color, posx, posy, size)
+
+  -- Make sure we make the surface big enough to hold our corner drawing
+  local area_x = posx + size
+  local area_y = posy + size
+
+  -- Create the transparent image surface
+  local surface = cairo.ImageSurface.create(cairo.Format.ARGB32, area_x, area_y)
+
+  -- Create a context and set the source color
+  local cr  = cairo.Context(surface)
+  cr:set_source(gears.color(color))
+
+  -- Create the square and fill it
+  -- x, y, width, height
+  cr:rectangle(posx, posy, size, size)
+  cr:fill()
+
+  return surface
+end
+
+-- use the cairo surface to draw a small box red box in the corner of the wibar
+theme.wibar_bgimage = box_surface("#FF0000", 0, 0, 10)
+```
+
+> Examples of creating surfaces: [https://github.com/awesomeWM/awesome/blob/master/lib/beautiful/theme_assets.lua](https://github.com/awesomeWM/awesome/blob/master/lib/beautiful/theme_assets.lua)
+
+> [Cairo Surface Formats](https://www.cairographics.org/manual/cairo-Image-Surfaces.html#cairo-format-t)  
+> [Cairo Documentation](https://www.cairographics.org/documentation/) for tutorial, FAQs and API reference.
