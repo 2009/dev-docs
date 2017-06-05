@@ -2,7 +2,7 @@
 
 ### TODO
 * [ ] Add details on manually creating a cairo pattern and link (Colors section).
-* [ ] Complete shape section (shape function)
+* [X] Complete shape section (shape function)
 * [ ] Complete image section (image file or cairo surface)
 * [ ] Consider adding images examples
 
@@ -118,17 +118,48 @@ A shape can be set to a function to allow you to set the shape of widgets, it ta
 Reading about [Cairo's Drawing Model](https://www.cairographics.org/tutorial/#L1drawingmodel) can help you understand
 how the shape will be used. Whatever shape you draw will essentially become the **mask** layer for the widget.
 
-> TODO add line about requiring cairo in awesome
+> See [Using Cairo in Awesome](https://awesomewm.org/doc/api/documentation/16-using-cairo.md.html) on details about
+> how to require cairo and translating the cairo api to lua.
 
+```lua
+-- Set some color variables
+theme.bg_normal = "#FF0000"
+theme.taglist_bg_focus = "#0000FF"
+
+-- Change the shape of tags in the taglist to a rounded rectangle
+theme.taglist_shape = function(cr, width, height)
+    radius = 20
+
+    if width / 2 < radius then
+        radius = width / 2
+    end
+
+    if height / 2 < radius then
+        radius = height / 2
+    end
+
+    cr:move_to(0, radius)
+
+    cr:arc( radius      , radius       , radius,    math.pi   , 3*(math.pi/2) )
+    cr:arc( width-radius, radius       , radius, 3*(math.pi/2),    math.pi*2  )
+    cr:arc( width-radius, height-radius, radius,    math.pi*2 ,    math.pi/2  )
+    cr:arc( radius      , height-radius, radius,    math.pi/2 ,    math.pi    )
+
+    cr:close_path()
+end
 ```
-TODO set a background theme var so we can paste in this example and see the result
-TODO manually who how to create a rouded rectangle shape or powerline
+
+> For an intro into drawing things with cairo see: [Drawing with Cairo](https://www.cairographics.org/tutorial/#L1drawing).  
+> Also see: [Cairo Documentation](https://www.cairographics.org/documentation/) for tutorial, FAQs and API reference.
+
+For examples of shape functions check out [gears.shape](https://github.com/awesomeWM/awesome/blob/master/lib/gears/shape.lua), you can use these functions directly:
+
+```lua
+theme.taglist_shape = function(cr, width, height)
+  local radius = 20
+  return gears.shape.rounded_rect(cr, width, height, radius)
+end
 ```
-
-> For an intro into drawing things with cairo see: [Drawing with Cairo](https://www.cairographics.org/tutorial/#L1drawing).
-> TODO mention what you can call and how it converts to lua
-
-> TODO Add api reference.
 
 ### Image
 
