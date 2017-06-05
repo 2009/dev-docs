@@ -164,7 +164,7 @@ end
 
 ### Image
 
-Any theme variables that expect a background image can be assigned the image path or a cairo surface.
+Any theme variables that expect a background image can be assigned the image path, a cairo surface or a function.
 
 #### Using an image path
 
@@ -209,3 +209,24 @@ theme.wibar_bgimage = box_surface("#FF0000", 0, 0, 10)
 
 > [Cairo Surface Formats](https://www.cairographics.org/manual/cairo-Image-Surfaces.html#cairo-format-t)  
 > [Cairo Documentation](https://www.cairographics.org/documentation/) for tutorial, FAQs and API reference.
+
+#### Using a function
+
+You also have the option of setting the variable to a function that takes the following argument: `(context, cr, width, height)`, where `context` is the context in which the function is called in awesome, `cr` is the cairo context to allow drawing and `width` and `height` are the widgets width and height.
+
+```lua
+-- Function to add a padded red box
+function padded_box(context, cr, width, height)
+  
+  -- Set the source color
+  cr:set_source(gears.color("#FF0000"))
+
+  -- Create the padded square and fill it
+  -- x, y, width, height
+  cr:rectangle(5, 5, width - 10, height - 10)
+  cr:fill()
+end
+
+-- Set the image variable to the function
+theme.widbar_bgimage = padded_box
+```
