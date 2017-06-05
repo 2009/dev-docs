@@ -2,9 +2,7 @@
 
 ### TODO
 * [ ] Add details on manually creating a cairo pattern and link (Colors section).
-* [X] Complete shape section (shape function)
-* [X] Complete image section (image file or cairo surface)
-* [ ] Add details on setting background images for widgets using a cairo surface (Image section)
+* [ ] Add section on modifying widgets (wibox.container.background and creating custom widget doc)
 * [ ] Consider adding images examples
 
 ## Modifying the Theme
@@ -13,7 +11,7 @@
 
 Awesome has a lot of theme variables to allow you to customize the look of awesome, all theme variables are stored in the `beautiful` module. See the above link for the list.
 
-Below I have listed what format the different variable types you will encounter expect.
+Below I have listed what format the different variable types you will encounter througout awesome expect.
 
 ### Colors
 
