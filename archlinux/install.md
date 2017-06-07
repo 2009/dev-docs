@@ -6,8 +6,10 @@
 ## Install non-GUI packages
 
 ```
-pacman -S git openssh termite networkmanager ranger atool highlight /
-          mediainfo file htop scrot fasd thefuck pkgfile
+pacman -S git openssh termite networkmanager pkgfile /
+          ranger atool highlight mediainfo file /
+          htop scrot bind-tools /
+          fasd thefuck
 ```
 
 ## Install main GUI packages
