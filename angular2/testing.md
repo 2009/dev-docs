@@ -1,3 +1,6 @@
+## TODO
+* [ ] Add examples of `inject()` and `TestBed.get()` and retrieving the TestBed instance
+
 ## `async` vs `fakeAsync`
 
 `async` and `fakeAsync` are two different methods for handling asyncronous actions in tests.
@@ -48,3 +51,10 @@ it('should show quote after getQuote promise (fakeAsync)', fakeAsync(() => {
   expect(el.textContent).toBe(testQuote);
 }));
 ```
+
+## `inject()` vs `TestBed.get()` for getting injectables
+
+What is the difference? In a nutshell it is the syntax, `inject()` is simply a helper function that allows you to wrap
+you `it()` blocks. `inject()` in fact calls `TestBed.get` on the TestBed instance.
+
+
