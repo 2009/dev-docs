@@ -210,7 +210,8 @@ theme.wibar_bgimage = box_surface("#FF0000", 0, 0, 10)
 
 #### Using a function
 
-> NOTE: Does not work for some variables such as `taglist_squares_*`.
+> NOTE: Does not work for some variables such as `taglist_squares_*` due to [this line](https://github.com/awesomeWM/awesome/blob/master/lib/awful/widget/common.lua#L98) in `awful.widget.common.list_update`.  
+> It is possible however to use a custom `update_fuction` passed to `taglist.new` to build the taglist yourself.
 
 You also have the option of setting the variable to a function that takes the following argument: `(context, cr, width, height)`, where `context` is the context in which the function is called in awesome, `cr` is the cairo context to allow drawing and `width` and `height` are the widgets width and height.
 
