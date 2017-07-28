@@ -8,6 +8,10 @@ See the following article by redux creator Dan Abramov: [You Might Not Need Redu
 * Data that is needed in multiple places of your app
 * Multiple actors (server, websockets, end-user etc) that will mutate the data
 
+## Why use immutable state in Angular?
+
+See this article by Victor Savkin: [Immutability vs Encapsulation][5]
+
 ## Libraries
 
 ### Redux/PlainJS
@@ -31,3 +35,4 @@ See the following article by redux creator Dan Abramov: [You Might Not Need Redu
 [2]: http://blog.angular-university.io/angular-2-redux-ngrx-rxjs/
 [3]: https://medium.com/@silvenon/i-always-seem-to-need-redux-f37686c23e45
 [4]: https://medium.com/swlh/the-case-for-flux-379b7d1982c6
+[5]: https://vsavkin.com/immutability-vs-encapsulation-90549ab74487
