@@ -202,3 +202,28 @@ Rebuild the image:
 ```
 mkinitcpio -p linux
 ```
+
+## Setup screensaver and lock screen
+
+> TODO: Lock on suspend and hibernate
+
+### Setup
+
+```
+yaourt -S xscreensaver-arch-logo
+```
+
+Start the xscreensaver daemon when X start by putting hte following in .xinitrc
+```
+xscreensaver -no-splash &
+```
+
+### Configuration
+
+Running `xscreensaver-demo` will allow you to configure the screensaver and
+settings, this will write to to `~/.xscreensaver`.
+
+### Running
+
+To start the screensaver run `xscreensaver-comman --lock`
+
