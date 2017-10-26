@@ -117,6 +117,13 @@ make it show up in weechat.
 See this link http://zanshin.net/2015/01/10/a-guide-for-setting-up-weechat-and-bitlbee/  
 See help for weechat and bitlbee.  
 See https://github.com/bitlbee/bitlbee-steam for adding steam account  
+See https://wiki.bitlbee.org/HowtoMigrate on migrating setting from computers
+
+Start the service
+```
+systemctl enable bitlbee
+systemctl start bitlbee
+```
 
 Automatically identify and connect to accounts
 ```
