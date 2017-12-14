@@ -21,11 +21,11 @@ WantedBy=default.target
 Enable a new container to run at boot (replace vpn with the container name):
 
 ```
-systemctl enable docker-container@vpn.service
+systemctl enable docker-container@<container-name>.service
 ```
 
 Override the default service by using the following:
 
 ```
-systemctl edit docker-container@vpn.service
+systemctl edit docker-container@<container-name>.service
 ```
