@@ -23,8 +23,17 @@ docker push username/repository:tag            # Upload tagged image to registry
 docker run username/repository:tag                   # Run image from a registry
 ```
 
+### Run a broken container for debugging
+
+```
+docker commit <container_id> my-broken-container &&
+docker run -it my-broken-container /bin/bash
+```
+
 ## Useful Links
 
 [Docker Getting Started](https://docs.docker.com/get-started/part2/)  
 [Dockerfile Reference](https://docs.docker.com/engine/reference/builder)  
-[Image Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)  
+[Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)  
+[5 ways to debug an exploding Docker container](https://medium.com/@pimterry/5-ways-to-debug-an-exploding-docker-container-4f729e2c0aa8)   
+[Run multiple services in a container](https://docs.docker.com/engine/admin/multi-service_container/)
