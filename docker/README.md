@@ -1,8 +1,3 @@
-### Remove all containers that are not currently running
-```
-docker rm `docker ps -a -q -f status=exited`
-```
-
 ### Standard docker commands
 ```
 docker build -t friendlyname .  # Create image using this directory's Dockerfile
@@ -28,6 +23,49 @@ docker run username/repository:tag                   # Run image from a registry
 ```
 docker commit <container_id> my-broken-container &&
 docker run -it my-broken-container /bin/bash
+```
+
+## Cleanup
+> See: [https://gist.github.com/bastman/5b57ddb3c11942094f8d0a97d461b430](https://gist.github.com/bastman/5b57ddb3c11942094f8d0a97d461b430)
+
+### Delete volumes
+```
+// see: https://github.com/chadoe/docker-cleanup-volumes
+
+$ docker volume rm $(docker volume ls -qf dangling=true)
+$ docker volume ls -qf dangling=true | xargs -r docker volume rm
+```
+    
+### Delete networks
+```
+$ docker network ls  
+$ docker network ls | grep "bridge"   
+$ docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }')
+```
+    
+### Remove docker images
+```
+// see: http://stackoverflow.com/questions/32723111/how-to-remove-old-and-unused-docker-images
+
+$ docker images
+$ docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+
+$ docker images | grep "none"
+$ docker rmi $(docker images | grep "none" | awk '/ / { print $3 }')
+```
+
+### Remove all containers that are not currently running
+```
+// see: http://stackoverflow.com/questions/32723111/how-to-remove-old-and-unused-docker-images
+
+$ docker ps
+$ docker ps -a
+$ docker rm $(docker ps -qa --no-trunc --filter "status=exited")
+```
+
+### Resize disk space for docker vm
+```
+$ docker-machine create --driver virtualbox --virtualbox-disk-size "40000" default
 ```
 
 ## Useful Links
