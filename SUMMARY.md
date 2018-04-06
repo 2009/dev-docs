@@ -16,5 +16,8 @@
 * [React](react/react.md)
   * [Testing](react/testing.md)
   * [ReactNative](react/react-native.md)
+  * [Redux](react/redux.md)
+  * [Higher Order Components (HOCs)](react/hocs.md)
+* [Ruby](ruby/README.md)
 * [Webpack](webpack/README.md)
 * [Function Programming](functional-programming.md)
