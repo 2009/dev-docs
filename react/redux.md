@@ -1,8 +1,15 @@
 # Redux
 
+* [] TODO devtools extention
+
 ## Example Apps
 
 [gothinkster/realworld][4]  
+[reactjs/redux/tree/master/examples][6]  
+
+## `connect` from `react-redux`
+
+TODO
 
 ## Async Actions
 
@@ -79,3 +86,4 @@ login.mockImplementation(() => ({ type: 'ignore' }));
 [3]: https://facebook.github.io/jest/docs/en/mock-functions.html#mock-implementations
 [4]: https://github.com/gothinkster/realworld
 [5]: https://github.com/tylercollier/redux-form-test
+[6]: https://github.com/reactjs/redux/tree/master/examples
