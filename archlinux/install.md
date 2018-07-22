@@ -1,7 +1,24 @@
 # My Archlinux Install
+
+[Installation Guide][3]
+
 #### TODO
 
 - [ ] Add a section on checking for errors!!!!
+
+## Issues with installation from USB (UEFI)
+
+A few times I've encounted issue with boot using UEFI, using the
+legacy usb boot option or setting the kernal parameter `nomoedeset`
+usally works.
+
+Other kernal parameters to try: `i915.modeset=0` `radeon.modeset=0`
+`nouveau.modeset=0` `nvidia.modeset=0` `acpi=0`
+
+Another option is to boot into another existing distro (or liveCD),
+then install arch from there, using something like [arch-bootstrap][2].
+
+[Install arch from an Existing System][1]  
 
 ## Install non-GUI packages
 
@@ -234,3 +251,6 @@ settings, this will write to to `~/.xscreensaver`.
 
 To start the screensaver run `xscreensaver-comman --lock`
 
+[1]: https://wiki.archlinux.org/index.php/Install_from_Existing_Linux
+[2]: https://github.com/tokland/arch-bootstrap
+[3]: https://wiki.archlinux.org/index.php/Installation_guide
