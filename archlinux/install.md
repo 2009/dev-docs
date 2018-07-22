@@ -9,7 +9,7 @@
 ## Issues with installation from USB (UEFI)
 
 A few times I've encounted issue with boot using UEFI, using the
-legacy usb boot option or setting the kernal parameter `nomoedeset`
+legacy usb boot option or setting the kernal parameter `nomodeset`
 usally works.
 
 Other kernal parameters to try: `i915.modeset=0` `radeon.modeset=0`
