@@ -2,11 +2,6 @@
 
 [Installation Guide][3]
 
-#### TODO
-
-- [ ] Add a section on checking for errors!!!
-- [ ] `ssh-keygen` and `ssh` config
-
 ## Issues with installation from USB (UEFI)
 
 A few times I've encounted issue with boot using UEFI, using the
@@ -80,6 +75,21 @@ yay -S tamzen-font-git blockify spotify bitlbee-steam-git tasksh
 systemctl enable NetworkManager
 systemctl start NetworkManager
 ```
+## Generate SSH keys
+
+[SSH keys - Arch Wiki][5]
+
+```sh
+ssh-keygen -C "$(whoami)@$(hostname)-$(date -I)" -G "$HOME/.ssh/id_rsa.$(hostname)"
+```
+
+Add ssh config to use the new key as our default:
+```sh
+cat <<EOF | tee $HOME/.ssh/config
+Host *
+  IdentityFile ~/.ssh/id_rsa.$(hostname)
+EOF
+```
 
 ## Setup SSH server
 
@@ -123,6 +133,18 @@ systemctl enable firewalld
 ## Setup Wireless
 
 Just use the networkmanager command `nmtui`
+
+## Setup Bluetooth
+
+[Bluetooth - Arch Wiki][5]  
+
+```sh
+pacman -S bluez bluez-utils
+
+# Start and/or enable bluetooth
+systemctl start bluetooth.service
+systemctl enable bluetooth.service
+```
 
 ## Setup Weechat and Bitlbee
 
@@ -249,7 +271,25 @@ settings, this will write to to `~/.xscreensaver`.
 
 To start the screensaver run `xscreensaver-comman --lock`
 
+## Checking for errors
+
+[System maintenance (check for errors) - Arch Wiki][7]
+
+```sh
+# errors in log files
+journalctl -p 3 -xb
+
+# errors with services
+systemctl --failed
+
+# Xorg errors
+grep -e \(EE\) -e \(WW\) /var/log/Xorg.0.log
+```
+
 [1]: https://wiki.archlinux.org/index.php/Install_from_Existing_Linux
 [2]: https://github.com/tokland/arch-bootstrap
 [3]: https://wiki.archlinux.org/index.php/Installation_guide
 [4]: https://github.com/Jguer/yay
+[5]: https://wiki.archlinux.org/index.php/SSH_keys#Generating_an_SSH_key_pair
+[6]: https://wiki.archlinux.org/index.php/Bluetooth
+[7]: https://wiki.archlinux.org/index.php/System_maintenance#Check_for_errors
