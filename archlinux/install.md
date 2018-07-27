@@ -55,17 +55,14 @@ pacman -S git ttf-dejavu tamsyn-font firefox chromium gimp inkscape mpv /
 pkgfile --update
 ```
 
-## Install Yaourt
+## Install `yay`
+[Instruction on installation - jguer/yay][4]
 
-```
+```sh
 mkdir ~/build
 cd ~/build
-git clone https://aur.archlinux.org/package-query.git
-cd package-query
-makepkg -si
-cd ..
-git clone https://aur.archlinux.org/yaourt.git
-cd yaourt
+git clone https://aur.archlinux.org/yay.git
+cd yay
 makepkg -si
 cd ..
 ```
@@ -73,7 +70,7 @@ cd ..
 ## Install AUR packages
 
 ```
-yaourt -S tamzen-font-git blockify spotify bitlbee-steam-git tasksh
+yay -S tamzen-font-git blockify spotify bitlbee-steam-git tasksh
 ```
 
 ## Enable NetworkManager
@@ -234,7 +231,7 @@ mkinitcpio -p linux
 ### Setup
 
 ```
-yaourt -S xscreensaver-arch-logo
+yay -S xscreensaver-arch-logo
 ```
 
 Start the xscreensaver daemon when X start by putting hte following in .xinitrc
@@ -254,3 +251,4 @@ To start the screensaver run `xscreensaver-comman --lock`
 [1]: https://wiki.archlinux.org/index.php/Install_from_Existing_Linux
 [2]: https://github.com/tokland/arch-bootstrap
 [3]: https://wiki.archlinux.org/index.php/Installation_guide
+[4]: https://github.com/Jguer/yay
