@@ -1,5 +1,7 @@
 # Macbook Specific Installation
 
+[Identify your MacBook Pro Version][5]
+
 Specific instructions on installing arch on a Macbook.
 
 [MacBook - Arch Wiki][2]  
@@ -57,3 +59,4 @@ Reboot!
 [2]: https://wiki.archlinux.org/index.php/MacBook
 [3]: https://wiki.archlinux.org/index.php/MacBookPro11,x
 [4]: https://gist.github.com/roadrunner2/1289542a748d9a104e7baec6a92f9cd7
+[5]: https://support.apple.com/en-us/HT201300
