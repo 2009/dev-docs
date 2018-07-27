@@ -136,7 +136,7 @@ Just use the networkmanager command `nmtui`
 
 ## Setup Bluetooth
 
-[Bluetooth - Arch Wiki][5]  
+[Bluetooth - Arch Wiki][6]  
 
 ```sh
 pacman -S bluez bluez-utils
