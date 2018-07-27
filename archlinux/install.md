@@ -32,7 +32,7 @@ pacman -S git openssh termite networkmanager pkgfile /
 ## Install main GUI packages
 
 ```
-pacman -S git xorg xorg-utils xorg-apps xterm xorg-xinit awesome
+pacman -S git xorg xorg-apps xterm xorg-xinit awesome
 ```
 
 ## Create .xinitrc and add `exec awesome`
