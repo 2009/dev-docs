@@ -78,6 +78,12 @@ blacklist hci_uart
 EOF
 ```
 
+# Troubleshooting
+
+## brcmfmac errors
+
+[https://bbs.archlinux.org/viewtopic.php?pid=1793977](https://bbs.archlinux.org/viewtopic.php?pid=1793977)
+
 [1]: https://wiki.archlinux.org/index.php/MacBook#Using_the_native_Apple_bootloader_with_GRUB
 [2]: https://wiki.archlinux.org/index.php/MacBook
 [3]: https://wiki.archlinux.org/index.php/MacBookPro11,x
