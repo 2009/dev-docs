@@ -4,7 +4,8 @@
 
 #### TODO
 
-- [ ] Add a section on checking for errors!!!!
+- [ ] Add a section on checking for errors!!!
+- [ ] `ssh-keygen` and `ssh` config
 
 ## Issues with installation from USB (UEFI)
 
