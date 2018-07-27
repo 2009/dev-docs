@@ -27,7 +27,7 @@ then install arch from there, using something like [arch-bootstrap][2].
 pacman -S git openssh termite networkmanager pkgfile /
           ranger atool highlight mediainfo file /
           htop scrot bind-tools /
-          fasd thefuck
+          fasd thefuck zsh
 ```
 
 ## Install main GUI packages
