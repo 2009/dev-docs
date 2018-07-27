@@ -55,6 +55,29 @@ yay -S macbook12-spi-driver-dkms
 
 Reboot!
 
+## Bluetooth
+
+Some macbooks require a patched bluetooth driver. Rather than patching a 
+kernel driver you can just disable the bluetooth module if you don't intend
+to use bluetooth.
+
+First check which module to blacklist:
+```sh
+# view bluetooth module names
+lsmod | grep blue
+
+# view what modules will be loaded
+mkinitcpio -M
+```
+
+Then add the module to the blacklist:
+```sh
+cat <<EOF | sudo tee /etc/modprobe.d/disable-bluetooth.conf
+# Disable bluetooth as it cause errors on macbooks
+blacklist hci_uart
+EOF
+```
+
 [1]: https://wiki.archlinux.org/index.php/MacBook#Using_the_native_Apple_bootloader_with_GRUB
 [2]: https://wiki.archlinux.org/index.php/MacBook
 [3]: https://wiki.archlinux.org/index.php/MacBookPro11,x
