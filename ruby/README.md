@@ -1,5 +1,7 @@
 # Ruby
 
+[Mastering ruby blocks in less than 5 minutes][4]
+
 ## Stuff
 
 ### Splat(\*) Operator
@@ -106,3 +108,4 @@ foo(key: "value", other_key: "other_value") # => ["value", {:other_key=>"other_v
 [1]: https://github.com/github/rubocop-github/blob/master/STYLEGUIDE.md
 [2]: http://blog.honeybadger.io/ruby-splat-array-manipulation-destructuring/
 [3]: http://po-ru.com/diary/destructuring-assignment-in-ruby/
+[4]: https://mixandgo.com/blog/mastering-ruby-blocks-in-less-than-5-minutes
