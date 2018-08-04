@@ -15,9 +15,14 @@
   * [Testing](angular2/testing.md)
 * [React](react/react.md)
   * [Higher Order Components (HOCs)](react/hocs.md)
-  * [Testing](react/testing.md)
+  * Testing
+    * [Jest](react/testing/jest.md)
+    * [Enzyme](react/testing/enzyme.md)
   * [ReactNative](react/react-native.md)
-  * [Redux](react/redux.md)
+* [Redux](redux/README.md)
+  * [Authentication](redux/authentication.md)
+  * [Async Action & Side Effects](redux/async-actions-and-side-effects.md)
+  * [Presentational & Container Components](redux/presentation-container-components.md)
 * [Webpack](webpack/README.md)
 ---
 * [Ruby](ruby/README.md)
