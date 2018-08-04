@@ -1,7 +1,20 @@
 # My Archlinux Install
-#### TODO
 
-- [ ] Add a section on checking for errors!!!!
+[Installation Guide][3]
+
+## Issues with installation from USB (UEFI)
+
+A few times I've encounted issue with boot using UEFI, using the
+legacy usb boot option or setting the kernal parameter `nomodeset`
+usally works.
+
+Other kernal parameters to try: `i915.modeset=0` `radeon.modeset=0`
+`nouveau.modeset=0` `nvidia.modeset=0` `acpi=0`
+
+Another option is to boot into another existing distro (or liveCD),
+then install arch from there, using something like [arch-bootstrap][2].
+
+[Install arch from an Existing System][1]  
 
 ## Install non-GUI packages
 
@@ -9,13 +22,13 @@
 pacman -S git openssh termite networkmanager pkgfile /
           ranger atool highlight mediainfo file /
           htop scrot bind-tools /
-          fasd thefuck
+          fasd thefuck zsh
 ```
 
 ## Install main GUI packages
 
 ```
-pacman -S git xorg xorg-utils xorg-apps xterm xorg-xinit awesome
+pacman -S git xorg xorg-apps xterm xorg-xinit awesome
 ```
 
 ## Create .xinitrc and add `exec awesome`
@@ -38,17 +51,14 @@ pacman -S git ttf-dejavu tamsyn-font firefox chromium gimp inkscape mpv /
 pkgfile --update
 ```
 
-## Install Yaourt
+## Install `yay`
+[Instruction on installation - jguer/yay][4]
 
-```
+```sh
 mkdir ~/build
 cd ~/build
-git clone https://aur.archlinux.org/package-query.git
-cd package-query
-makepkg -si
-cd ..
-git clone https://aur.archlinux.org/yaourt.git
-cd yaourt
+git clone https://aur.archlinux.org/yay.git
+cd yay
 makepkg -si
 cd ..
 ```
@@ -56,7 +66,7 @@ cd ..
 ## Install AUR packages
 
 ```
-yaourt -S tamzen-font-git blockify spotify bitlbee-steam-git tasksh
+yay -S tamzen-font-git blockify spotify bitlbee-steam-git tasksh
 ```
 
 ## Enable NetworkManager
@@ -64,6 +74,21 @@ yaourt -S tamzen-font-git blockify spotify bitlbee-steam-git tasksh
 ```
 systemctl enable NetworkManager
 systemctl start NetworkManager
+```
+## Generate SSH keys
+
+[SSH keys - Arch Wiki][5]
+
+```sh
+ssh-keygen -C "$(whoami)@$(hostname)-$(date -I)" -G "$HOME/.ssh/id_rsa.$(hostname)"
+```
+
+Add ssh config to use the new key as our default:
+```sh
+cat <<EOF | tee $HOME/.ssh/config
+Host *
+  IdentityFile ~/.ssh/id_rsa.$(hostname)
+EOF
 ```
 
 ## Setup SSH server
@@ -108,6 +133,18 @@ systemctl enable firewalld
 ## Setup Wireless
 
 Just use the networkmanager command `nmtui`
+
+## Setup Bluetooth
+
+[Bluetooth - Arch Wiki][6]  
+
+```sh
+pacman -S bluez bluez-utils
+
+# Start and/or enable bluetooth
+systemctl start bluetooth.service
+systemctl enable bluetooth.service
+```
 
 ## Setup Weechat and Bitlbee
 
@@ -217,7 +254,7 @@ mkinitcpio -p linux
 ### Setup
 
 ```
-yaourt -S xscreensaver-arch-logo
+yay -S xscreensaver-arch-logo
 ```
 
 Start the xscreensaver daemon when X start by putting hte following in .xinitrc
@@ -234,3 +271,25 @@ settings, this will write to to `~/.xscreensaver`.
 
 To start the screensaver run `xscreensaver-comman --lock`
 
+## Checking for errors
+
+[System maintenance (check for errors) - Arch Wiki][7]
+
+```sh
+# errors in log files
+journalctl -p 3 -xb
+
+# errors with services
+systemctl --failed
+
+# Xorg errors
+grep -e \(EE\) -e \(WW\) /var/log/Xorg.0.log
+```
+
+[1]: https://wiki.archlinux.org/index.php/Install_from_Existing_Linux
+[2]: https://github.com/tokland/arch-bootstrap
+[3]: https://wiki.archlinux.org/index.php/Installation_guide
+[4]: https://github.com/Jguer/yay
+[5]: https://wiki.archlinux.org/index.php/SSH_keys#Generating_an_SSH_key_pair
+[6]: https://wiki.archlinux.org/index.php/Bluetooth
+[7]: https://wiki.archlinux.org/index.php/System_maintenance#Check_for_errors
